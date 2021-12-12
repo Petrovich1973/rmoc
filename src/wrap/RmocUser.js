@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export default function RmocUser({userName = 'Денис'}) {
+export default function RmocUser({userName = 'Алексей Щуренков'}) {
 
     const classes = useStyles()
 

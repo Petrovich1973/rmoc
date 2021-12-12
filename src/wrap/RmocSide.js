@@ -16,7 +16,7 @@ import {makeStyles} from '@mui/styles'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: 320,
+        minWidth: 320,
         backgroundColor: "white",
         borderRight: '1px solid #ccc'
     }

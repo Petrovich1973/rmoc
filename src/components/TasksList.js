@@ -13,13 +13,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export default function TasksList(props) {
+export default function TasksList({list = []}) {
 
     const classes = useStyles()
 
     return (
         <div className={classes.root}>
-            {[1,2,3,4,5].map((item, i) => <TasksListItem key={i} item/>)}
+            {list.map((item, i) => <TasksListItem key={i} item={item}/>)}
         </div>
     )
 }

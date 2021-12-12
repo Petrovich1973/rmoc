@@ -1,10 +1,8 @@
 import * as React from "react"
 import { makeStyles } from '@mui/styles'
-import ListItemButton from "@mui/material/ListItemButton"
-import ListItemText from "@mui/material/ListItemText"
 import {NavLink} from "react-router-dom"
 import {CalendarToday} from "@mui/icons-material"
-import {Chip, Typography} from "@mui/material"
+import {Chip} from "@mui/material"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -66,17 +64,84 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function TasksListItem({item = {}}) {
+
     const {
-        link = '/task/1212',
-        title = 'ВКЛ-14 Счета по которым не совершались операции более 2-х лет'
+        id = null,
+        // reportId = 'test',
+        title = 'ВКЛ-14 Счета по которым не совершались операции более 2-х лет',
+        tb = '28',
+        osb = '',
+        vsp = '',
+        status = 0
     } = item
+
+    const unit = ['tb', 'osb', 'vsp']
+
+    const createUnit = un => {
+        switch (un) {
+            case 'tb':
+                if(!tb) return null
+                return (`${tb} Тб`)
+            case 'osb':
+                if(!osb) return null
+                return (`${osb} ОСБ`)
+            case 'vsp':
+                if(!vsp) return null
+                return (`${vsp} ВСП`)
+            default:
+                return (`Не существует`)
+        }
+    }
+
+    const createStatus = st => {
+        switch (st) {
+            case 0:
+                return (`Ожидает`)
+            case 1:
+                return (`Не знаю 1`)
+            case 2:
+                return (`Формируется`)
+            case 3:
+                return (`Ошибка`)
+            case 4:
+                return (`Готово`)
+            case 5:
+                return (`Не знаю 5`)
+            case 6:
+                return (`Не знаю 6`)
+            default:
+                return (`Не известно`)
+        }
+    }
+
+    const createStatusColor = st => {
+        switch (st) {
+            case 0:
+                return (`transparent`)
+            case 1:
+                return (`Не знаю`)
+            case 2:
+                return (`#F4E3FF`)
+            case 3:
+                return (`#ffaf87`)
+            case 4:
+                return (`#E0FFE0`)
+            case 5:
+                return (`transparent`)
+            case 6:
+                return (`transparent`)
+            default:
+                return (`transparent`)
+        }
+    }
+
     const classes = useStyles()
 
     return (
-        <NavLink to={link} className={classes.root}>
+        <NavLink to={`/tasks/${id}`} className={classes.root}>
             <div className={classes.title}>{title}</div>
             <div className={classes.header}>
-                <div className={classes.unit}>38 Тб / 3454 ОСБ / 0034 ВСП</div>
+                <div className={classes.unit}>{unit.map(m => (createUnit(m))).filter(f => f).join(' / ')}</div>
                 <div className={classes.data}>Filter</div>
             </div>
             <div className={classes.footer}>
@@ -84,7 +149,10 @@ export default function TasksListItem({item = {}}) {
                     <CalendarToday/>
                     <span>12.12.2021</span>
                 </div>
-                <Chip label="Формируется" className={classes.status} sx={{ backgroundColor: '#F4E3FF' }} />
+                <Chip
+                    label={createStatus(status)}
+                    className={classes.status}
+                    sx={{ backgroundColor: createStatusColor(status) }} />
             </div>
         </NavLink>
     )
