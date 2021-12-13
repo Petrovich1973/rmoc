@@ -1,8 +1,9 @@
 import * as React from "react"
-import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
+// import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon'
+// import LogoutIcon from '@mui/icons-material/Logout'
 import {makeStyles} from '@mui/styles'
 import {IconButton, Typography} from "@mui/material"
-import LogoutIcon from '@mui/icons-material/Logout'
+import {OutdoorGrill, InsertEmoticon} from '@material-ui/icons'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,13 +28,13 @@ export default function RmocUser({userName = 'Алексей Щуренков'})
 
     return (
         <div className={classes.root}>
-            <InsertEmoticonIcon sx={{fontSize: 48, color: '#81abf3'}}/>
+            <InsertEmoticon sx={{fontSize: 48, color: '#81abf3'}}/>
             <div className={classes.group}>
                 <Typography variant="h6" component="h6" color={'black'}>{userName}</Typography>
                 <Typography variant="subtitle2">Специалист</Typography>
             </div>
             <IconButton>
-                <LogoutIcon/>
+                <OutdoorGrill/>
             </IconButton>
         </div>
     )

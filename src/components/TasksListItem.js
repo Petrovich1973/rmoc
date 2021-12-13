@@ -1,7 +1,8 @@
 import * as React from "react"
 import { makeStyles } from '@mui/styles'
 import {NavLink} from "react-router-dom"
-import {CalendarToday} from "@mui/icons-material"
+// import {CalendarToday} from "@mui/icons-material"
+import {CalendarToday} from '@material-ui/icons'
 import {Chip} from "@mui/material"
 
 const useStyles = makeStyles((theme) => ({

@@ -1,8 +1,9 @@
 import * as React from "react"
 import {Link} from "react-router-dom"
-import SearchIcon from '@mui/icons-material/Search'
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
-import FilterAltIcon from '@mui/icons-material/FilterAlt'
+// import SearchIcon from '@mui/icons-material/Search'
+// import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+// import FilterAltIcon from '@mui/icons-material/FilterAlt'
+import {Search, ArrowBackIos, Filter} from '@material-ui/icons'
 import {IconButton, Typography} from "@mui/material"
 import {makeStyles} from '@mui/styles'
 
@@ -32,7 +33,7 @@ export default function TasksHeader({onFilter = () => console.log('onFilter')}) 
         <div className={classes.root}>
             <Link to={'/tasks'}>
                 <IconButton>
-                    <ArrowBackIosIcon/>
+                    <ArrowBackIos/>
                 </IconButton>
             </Link>
             <div className={classes.sep}/>
@@ -45,10 +46,10 @@ export default function TasksHeader({onFilter = () => console.log('onFilter')}) 
                 ВКЛ-14 Счета по которым не совершались операции более 2-х лет
             </Typography>
             <IconButton>
-                <SearchIcon/>
+                <Search/>
             </IconButton>
             <IconButton onClick={onFilter}>
-                <FilterAltIcon/>
+                <Filter/>
             </IconButton>
         </div>
     )

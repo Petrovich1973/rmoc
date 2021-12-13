@@ -1,5 +1,6 @@
 import * as React from "react"
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+// import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import {HelpOutline} from '@material-ui/icons'
 import {IconButton} from "@mui/material"
 import {makeStyles} from '@mui/styles'
 
@@ -24,7 +25,7 @@ export default function RmocHeader() {
     return (
         <div className={classes.root}>
             <IconButton>
-                <HelpOutlineIcon/>
+                <HelpOutline/>
             </IconButton>
         </div>
     )

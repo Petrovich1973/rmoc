@@ -1,9 +1,10 @@
 import * as React from 'react'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
+// import InboxIcon from '@mui/icons-material/MoveToInbox'
+import {Inbox, ExpandMore, ExpandLess} from '@material-ui/icons'
 import {NavLink} from "react-router-dom"
-import {ExpandLess, ExpandMore} from "@mui/icons-material"
+// import {ExpandLess, ExpandMore} from "@mui/icons-material"
 import {makeStyles} from '@mui/styles'
 
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 export default function RmocNav({
                                     links = null,
                                     title = null,
-                                    icon = <InboxIcon/>,
+                                    icon = <Inbox/>,
                                     paddingLeft = 0
 }) {
     const classes = useStyles()
