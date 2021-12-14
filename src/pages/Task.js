@@ -22,7 +22,7 @@ export default function Task() {
     const [load, setLoad] = React.useState(true)
     const [task, setTask] = React.useState({})
 
-    const {reportId = ''} = task || {}
+    const {reportId = '', reportName = null} = task || {}
 
     const classes = useStyles()
     const {id = 0} = useParams()
@@ -53,7 +53,7 @@ export default function Task() {
         <div className={classes.root}>
             <TaskHeader title={createTitle(reportId)} onFilter={handleFilterVisible}/>
             {filterIsOpen && <ReportFilter/>}
-            <ReportTable/>
+            {reportName && <ReportTable reportName={reportName}/>}
             {/*<ReportNavigation/>*/}
         </div>
     )

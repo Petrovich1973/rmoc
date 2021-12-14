@@ -12,18 +12,29 @@ import {HOST} from "../constants"
 import {LinearProgress} from "@mui/material"
 import {col} from '../helpers'
 
-export default function ReportTable() {
+export default function ReportTable({reportName = null}) {
     const [page, setPage] = React.useState(0)
     const [rowsPerPage, setRowsPerPage] = React.useState(15)
     const [rows, setRows] = React.useState([])
     const [load, setLoad] = React.useState(false)
 
     React.useEffect(() => {
-        setLoad(true)
-        axios(`${HOST}/report`)
-            .then(res => setRows([...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data]))
-            .catch(err => alert(err))
-            .finally(() => setLoad(false))
+        if(reportName)
+            setLoad(true)
+            // axios(`${HOST}/report`)
+            //     .then(res => setRows([...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data]))
+            //     .catch(err => alert(err))
+            //     .finally(() => setLoad(false))
+            axios({
+                method: 'POST',
+                url: `${HOST}/report`,
+                data: {
+                    reportName
+                }
+            })
+                .then(res => setRows(res.data))
+                .catch(err => alert(err))
+                .finally(() => setLoad(false))
     }, [])
 
     const handleChangePage = (event, newPage) => {
