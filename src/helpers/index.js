@@ -1,11 +1,12 @@
 import moment from 'moment'
 
-const createTitle = (id) => {
-    const mappingReferenceReport = [
-        {id: 'test', title: 'ВКЛ-14 Счета по которым не совершались операции более 2-х лет'}
-    ]
-    const {title = 'Ничего не найдено'} = mappingReferenceReport.find(item => item.id === id) || {}
+const reportsTpl = [
+    {id: 'test', title: 'ВКЛ-14 Счета по которым не совершались операции более 2-х лет'},
+    {id: 'test2', title: 'ВКЛ-29 Закрытые счета с нулевым остатком'}
+]
 
+const createTitle = (id) => {
+    const {title = null} = reportsTpl.find(item => item.id === id) || {}
     return title
 }
 
@@ -48,4 +49,4 @@ const col = [
 
 
 
-export {createTitle, col}
+export {createTitle, col, reportsTpl}

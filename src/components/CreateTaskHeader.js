@@ -1,12 +1,7 @@
 import * as React from "react"
 import {Link} from "react-router-dom"
-// import SearchIcon from '@mui/icons-material/Search'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
-import FilterAltIcon from '@mui/icons-material/FilterAlt'
-// import InfoIcon from '@mui/icons-material/Info'
-// import DeleteIcon from '@mui/icons-material/Delete'
-import FileDownloadIcon from '@mui/icons-material/FileDownload'
-import {Button, IconButton, Typography} from "@mui/material"
+import {IconButton, Typography} from "@mui/material"
 import {makeStyles} from '@mui/styles'
 
 
@@ -34,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export default function TasksHeader({title = '', onFilter = () => console.log('onFilter')}) {
+export default function CreateTaskHeader() {
 
     const classes = useStyles()
 
@@ -52,15 +47,8 @@ export default function TasksHeader({title = '', onFilter = () => console.log('o
                 variant="h6"
                 component="h6"
                 color={'black'}>
-                {title}
+                Создание нового отчета
             </Typography>
-            <Button size="small" className={classes.btn} startIcon={<FileDownloadIcon/>}>
-                Скачать
-            </Button>
-            <div className={classes.nbsp}/>
-            <IconButton onClick={onFilter}>
-                <FilterAltIcon/>
-            </IconButton>
         </div>
     )
 }

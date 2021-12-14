@@ -6,7 +6,7 @@ import ReportFilter from "../components/ReportFilter"
 import axios from "axios"
 import {HOST} from "../constants"
 import {useParams} from "react-router-dom"
-import {createTitle} from'../helpers/reportName'
+import {createTitle} from '../helpers'
 
 const useStyles = makeStyles((theme) => ({
     root: {

@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom"
 import {CalendarToday} from "@mui/icons-material"
 import {Chip} from "@mui/material"
 import moment from 'moment'
-import {createTitle} from'../helpers/reportName'
+import {createTitle} from '../helpers'
 
 const useStyles = makeStyles((theme) => ({
     root: {

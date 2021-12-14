@@ -10,13 +10,13 @@ import TableRow from '@mui/material/TableRow'
 import axios from "axios"
 import {HOST} from "../constants"
 import {LinearProgress} from "@mui/material"
-import {col} from'../helpers/reportName'
+import {col} from '../helpers'
 
 export default function ReportTable() {
     const [page, setPage] = React.useState(0)
     const [rowsPerPage, setRowsPerPage] = React.useState(15)
     const [rows, setRows] = React.useState([])
-    const [lLoad, setLoad] = React.useState(false)
+    const [load, setLoad] = React.useState(false)
 
     React.useEffect(() => {
         setLoad(true)
@@ -35,7 +35,7 @@ export default function ReportTable() {
         setPage(0)
     }
 
-    if (lLoad && !rows.length) return <LinearProgress color="inherit"/>
+    if (load && !rows.length) return <LinearProgress color="inherit"/>
 
     return (
         <Paper sx={{
