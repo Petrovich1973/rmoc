@@ -147,7 +147,7 @@ export default function CreateTaskWrap() {
         tb: '38',
         osb: null,
         vsp: null,
-        reportDate: moment(new Date(), 'YYYY-MM-DD HH:mm:ss', 'UTC').format(),
+        reportDate: '',
         schedulingType: '0',
         lifetimeLimit: '1'
     })
@@ -168,8 +168,19 @@ export default function CreateTaskWrap() {
         setForm({...form, ...data})
     }
 
-    const onSend = data => {
-        axios.post(`${HOST}/report`, form)
+    const onSend = async (data) => {
+        setLoad(true)
+        await axios({
+            method: 'POST',
+            url: `${HOST}/report`,
+            data: {
+                ...data,
+                reportDate: moment(new Date(), 'YYYY-MM-DD HH:mm:ss', 'UTC').format()
+            }
+        })
+            .then(res => console.log(res.data))
+            .catch(err => console.error(err))
+            .finally(() => setLoad(false))
     }
 
     return (
@@ -191,7 +202,7 @@ export default function CreateTaskWrap() {
                 <div className={classes.footer}>
                     <Button
                         disabled={load}
-                        onClick={onSend}
+                        onClick={() => onSend(form)}
                         sx={{backgroundColor: '#54aa64'}}
                         variant="contained">Создать</Button>
                 </div>
