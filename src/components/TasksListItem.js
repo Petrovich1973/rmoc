@@ -3,6 +3,8 @@ import { makeStyles } from '@mui/styles'
 import {NavLink} from "react-router-dom"
 import {CalendarToday} from "@mui/icons-material"
 import {Chip} from "@mui/material"
+import moment from 'moment'
+import {createTitle} from'../helpers/reportName'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,9 +26,10 @@ const useStyles = makeStyles((theme) => ({
     title: {
         fontSize: '120%',
         fontWeight: '600',
+        lineHeight: '1.2',
         color: 'black',
-        maxWidth: 700,
-        whiteSpace: 'nowrap',
+        maxWidth: 600,
+        // whiteSpace: 'nowrap',
         overflow: "hidden",
         textOverflow: "ellipsis"
     },
@@ -66,13 +69,14 @@ const useStyles = makeStyles((theme) => ({
 export default function TasksListItem({item = {}}) {
 
     const {
-        id = null,
-        // reportId = 'test',
-        title = 'ВКЛ-14 Счета по которым не совершались операции более 2-х лет',
+        taskId = null,
+        reportId = 'test',
+        // title = 'ВКЛ-14 Счета по которым не совершались операции более 2-х лет',
+        taskCreationDate = "2021-12-13T16:32:12.919",
         tb = '28',
         osb = '',
         vsp = '',
-        status = 0
+        taskStatus = 0
     } = item
 
     const unit = ['tb', 'osb', 'vsp']
@@ -138,8 +142,8 @@ export default function TasksListItem({item = {}}) {
     const classes = useStyles()
 
     return (
-        <NavLink to={`/tasks/${id}`} className={classes.root}>
-            <div className={classes.title}>{title}</div>
+        <NavLink to={`/tasks/${taskId}`} className={classes.root}>
+            <div className={classes.title}>{createTitle(reportId)}</div>
             <div className={classes.header}>
                 <div className={classes.unit}>{unit.map(m => (createUnit(m))).filter(f => f).join(' / ')}</div>
                 <div className={classes.data}>Filter</div>
@@ -147,12 +151,12 @@ export default function TasksListItem({item = {}}) {
             <div className={classes.footer}>
                 <div className={classes.calendar}>
                     <CalendarToday/>
-                    <span>12.12.2021</span>
+                    <span>{moment(taskCreationDate).format('DD.MM.YYYY HH:mm:ss')}</span>
                 </div>
                 <Chip
-                    label={createStatus(status)}
+                    label={createStatus(taskStatus)}
                     className={classes.status}
-                    sx={{ backgroundColor: createStatusColor(status) }} />
+                    sx={{ backgroundColor: createStatusColor(taskStatus) }} />
             </div>
         </NavLink>
     )

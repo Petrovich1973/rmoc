@@ -21,7 +21,7 @@ function App() {
                         <Routes>
                             <Route path="/" element={<Navigate to="/tasks"/>}/>
                             <Route path={'/tasks'} element={<Tasks/>}/>
-                            <Route path={'/tasks/:task'} element={<Task/>}/>
+                            <Route path={'/tasks/:id'} element={<Task/>}/>
                             <Route path={'/create'} element={<TaskCreate/>}/>
                             <Route path="*" element={<Navigate to="/tasks"/>}/>
                         </Routes>

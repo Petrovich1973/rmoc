@@ -10,43 +10,7 @@ import TableRow from '@mui/material/TableRow'
 import axios from "axios"
 import {HOST} from "../constants"
 import {LinearProgress} from "@mui/material"
-import moment from 'moment'
-
-const dateformat = 'DD.MM.YYYY'
-// const dateTimeformat = 'DD.MM.YYYY hh:mm:ss'
-const col = [
-    {id: 'idMinor', label: 'idMinor', align: 'left', minWidth: 120, format: (value) => value},
-    {id: 'idMajor', label: 'idMajor', align: 'left', minWidth: 120, format: (value) => value},
-    {id: 'opday', label: 'opday', align: 'left', minWidth: 120, format: (value) => moment(value).format(dateformat)},
-    {
-        id: 'optransday',
-        label: 'optransday',
-        align: 'left',
-        minWidth: 120,
-        format: (value) => moment(value).format(dateformat)
-    },
-    {id: 'office', label: 'office', align: 'left', minWidth: 70, format: (value) => value},
-    {id: 'branchno', label: 'branchno', align: 'left', minWidth: 70, format: (value) => value},
-    {id: 'idMega', label: 'idMega', align: 'left', minWidth: 70, format: (value) => value},
-    {id: 'balance', label: 'balance', align: 'left', minWidth: 100, format: (value) => value},
-    {id: 'state', label: 'state', align: 'left', minWidth: 60, format: (value) => value},
-    {id: 'opno', label: 'opno', align: 'left', minWidth: 50, format: (value) => value},
-    {
-        id: 'expirationday',
-        label: 'expirationday',
-        align: 'left',
-        minWidth: 120,
-        format: (value) => moment(value).format(dateformat)
-    },
-    {id: 'opkind', label: 'opkind', align: 'left', minWidth: 50, format: (value) => value},
-    {
-        id: 'prolongday',
-        label: 'prolongday',
-        align: 'left',
-        minWidth: 120,
-        format: (value) => moment(value).format(dateformat)
-    }
-]
+import {col} from'../helpers/reportName'
 
 export default function ReportTable() {
     const [page, setPage] = React.useState(0)
@@ -57,7 +21,7 @@ export default function ReportTable() {
     React.useEffect(() => {
         setLoad(true)
         axios(`${HOST}/report`)
-            .then(res => setRows([...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data]))
+            .then(res => setRows([...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data]))
             .catch(err => alert(err))
             .finally(() => setLoad(false))
     }, [])
@@ -97,8 +61,7 @@ export default function ReportTable() {
                                 <TableCell
                                     key={column.id}
                                     align={column.align}
-                                    style={{minWidth: column.minWidth}}
-                                >
+                                    style={{minWidth: column.minWidth}}>
                                     {column.label}
                                 </TableCell>
                             ))}
@@ -136,17 +99,7 @@ export default function ReportTable() {
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-            />
+                onRowsPerPageChange={handleChangeRowsPerPage}/>
         </Paper>
     )
 }
-
-
-// export default function ReportTable() {
-//     return (
-//         <div>
-//             ReportTable
-//         </div>
-//     )
-// }

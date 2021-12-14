@@ -18,9 +18,9 @@ export default function ReportFilter () {
 
     return (
         <div className={classes.root}>
-            <div>ghfgfhghgf</div>
-            <div>ghfgfhghgf</div>
-            <div>ghfgfhghgf</div>
+            <div>Filter 1</div>
+            <div>Filter 2</div>
+            <div>Filter 3</div>
         </div>
     )
 }
