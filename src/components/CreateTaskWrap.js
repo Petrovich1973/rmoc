@@ -172,7 +172,7 @@ export default function CreateTaskWrap() {
         setLoad(true)
         await axios({
             method: 'POST',
-            url: `${HOST}/report`,
+            url: `${HOST}/task`,
             data: {
                 ...data,
                 reportDate: moment(new Date(), 'YYYY-MM-DD HH:mm:ss', 'UTC').format()

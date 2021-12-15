@@ -19,22 +19,25 @@ export default function ReportTable({reportName = null}) {
     const [load, setLoad] = React.useState(false)
 
     React.useEffect(() => {
-        if(reportName)
+        if (reportName)
             setLoad(true)
-            // axios(`${HOST}/report`)
-            //     .then(res => setRows([...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data]))
-            //     .catch(err => alert(err))
-            //     .finally(() => setLoad(false))
-            axios({
-                method: 'POST',
-                url: `${HOST}/report`,
-                data: {
-                    reportName
-                }
+        // axios(`${HOST}/report`)
+        //     .then(res => setRows([...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data, ...res.data]))
+        //     .catch(err => alert(err))
+        //     .finally(() => setLoad(false))
+        axios({
+            method: 'POST',
+            url: `${HOST}/report`,
+            data: {
+                reportName
+            }
+        })
+            .then(res => {
+                const {entityList = []} = res.data
+                setRows(entityList)
             })
-                .then(res => setRows(res.data))
-                .catch(err => alert(err))
-                .finally(() => setLoad(false))
+            .catch(err => alert(err))
+            .finally(() => setLoad(false))
     }, [])
 
     const handleChangePage = (event, newPage) => {
